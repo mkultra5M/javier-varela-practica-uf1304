@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pequeño ejercicio de formulario web">
+    <title>Formulario Web</title>
+    <link rel="icon" href="./assets/favicon/rectangle-list-regular.svg">
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header>
+        <h2>Formulario</h2>
+        <nav class="navbar">
+
+            <ul class="navbar-list">
+                <li class="navbar-items"><a href="#">Inicio</a></li>
+                <li class="navbar-items"><a href="#about">Sobre nosotros</a></li>
+                <li class="navbar-items"><a href="#social">Redes sociales</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <form action="#" id="jobApplicationForm">
+            <div class="stepper">
+                <span class="currentStep">1</span>/3</span>
+            </div>
+            <!-- Paso 1: Información personal -->
+            <fieldset class="step" id="step-1">
+                <legend>Información personal</legend>
+                <label for="name">Nombre<span class="required">*</span></label>
+                <input type="text" id="nombre" name="nombre" required pattern="[A-Za-z]+"
+                    placeholder="Escribe tu nombre">
+
+                <label for="name">Primer Apellido<span class="required">*</span></label>
+                <input type="text" id="firstSurname" name="firstSurname" required pattern="[A-Za-z]+"
+                    placeholder="Tu primer apellido">
+
+                <label for="name">Segundo Apellido</label>
+                <input type="text" id="secondSurname" name="secondSurname" pattern="[A-Za-z]+"
+                    placeholder="Tu segundo apellido">
+
+                <label for="email">Correo electrónico<span class="required">*</span></label>
+                <input type="email" id="email" name="email" required pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
+                    placeholder="xxx@gmail.com">
+
+                <label for="phone">Teléfono</label>
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{3}[0-9]{3}[0-9]{3}"
+                    placeholder="Tu teléfono móvil">
+
+                <label for="number">NIF</label>
+
+                <input type="number" id="number" name="number" pattern="^[0-9]{8}[A-Z]$" placeholder="Tu DNI">
+                <button type="button" class="next" onclick="nextStep()">Siguiente</button>
+            </fieldset>
+            <!-- Paso 2: Información laboral -->
+            <fieldset class="step" id="step-2" hidden>
+                <legend>Información laboral</legend>
+                <label for="jobSector">Sector profesional<span class="required">*</span></label>
+                <select name="jobSector" id="jobSector" required aria-describedby="typeError">
+                    <button>
+                        <span aria-hidden="true">
+                            <selectedcontent>Selecciona una opción</selectedcontent>
+                        </span>
+                        <span class="arrow">
+                            <img src="./assets/icons/down-arrow-svgrepo-com.svg" alt="Flecha de selección">
+                        </span>
+                    </button>
+
+                    <option value="business">Administración</option>
+                    <option value="marketing">Márketing</option>
+                    <option value="systems">Informática</option>
+
+                </select>
+                <label for="eduLevel">Formación profesional<span class="required">*</span></label>
+                <select name="edu" id="eduLevel" required aria-describedby="typeError">
+                    <button>
+                        <span aria-hidden="true">
+                            <selectedcontent>Selecciona una opción</selectedcontent>
+                        </span>
+                        <span class="arrow">
+                            <img src="./assets/icons/down-arrow-svgrepo-com.svg" alt="Flecha de selección">
+                        </span>
+                    </button>
+
+                    <option value="vocationalTraining">Fomación Profesional de Nivel Superior</option>
+                    <option value="universityDegree">Grado Universitario</option>
+                    <option value="mastersDegree">Máster Universitario</option>
+
+                </select>
+                <legend>Rango salarial</legend>
+
+                <label class="radio-btn">18.000-21.000
+                    <input type="radio" name="radio">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="radio-btn">22.000-26.000
+                    <input type="radio" name="radio">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="radio-btn">27.000-29.000
+                    <input type="radio" name="radio">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="radio-btn">30.000-34.000
+                    <input type="radio" name="radio">
+                    <span class="checkmark"></span>
+
+                    <button type="button" class="previous" onclick="previousStep()">Anterior</button>
+                    <button type="button" class="next" onclick="nextStep()">Siguiente</button>
+            </fieldset>
+            <!-- Paso 3: Descripción personal y movilidad -->
+            <fieldset class="step" id="step-3" hidden>
+                <legend>Disponibilidad de movilidad (viajar)</legend>
+                <label class="checkbox-btn">No sería posible
+                    <input type="checkbox" checked="checked">
+                    <span class="checkmark"></span>
+                </label>
+
+                <label class="checkbox-btn">A veces
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                </label>
+
+                <label class="checkbox-btn">Disponibilidad total
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                </label>
+
+                <legend>Escríbenos sobre ti</legend>
+                <textarea name="comment" form="jobApplicationForm" rows="5"
+                    placeholder="Descríbete brevemente..." required id="description"></textarea>
+
+                <button type="button" class="previous" onclick="previousStep()">Anterior</button>
+                <button type="submit">Enviar solicitud</button>
+            </fieldset>
+            <div id="errorMessages"></div>
+        </form>
+    </main>
+    <footer>
+        <div class="social-icons">
+            <a href="#social"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#social"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="#social"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+        <p class="footer__copy">Copyright<sup>&copy;</sup>2025</p>
+    </footer>
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
