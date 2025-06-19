@@ -27,12 +27,11 @@
         </nav>
     </header>
     <main>
-        <form action="#" id="jobApplicationForm">
-            <div class="stepper">
-                <span class="currentStep">1</span>/3</span>
-            </div>
+        <form action="#" class="form-container">
+
             <!-- Paso 1: Información personal -->
-            <fieldset class="step" id="step-1">
+            <div class="currentStep"><span>1</span>/3</span></div>
+            <fieldset class="input-group">
                 <legend>Información personal</legend>
                 <label for="name">Nombre<span class="required">*</span></label>
                 <input type="text" id="nombre" name="nombre" required pattern="[A-Za-z]+"
@@ -56,11 +55,12 @@
 
                 <label for="number">NIF</label>
 
-                <input type="number" id="number" name="number" pattern="^[0-9]{8}[A-Z]$" placeholder="Tu DNI">
-                <button type="button" class="next" onclick="nextStep()">Siguiente</button>
+                <input type="text" id="nif" name="nif" pattern="[0-9]{8}[A-Z]" placeholder="Tu DNI">
+
             </fieldset>
             <!-- Paso 2: Información laboral -->
-            <fieldset class="step" id="step-2" hidden>
+            <div class="currentStep"><span>2</span>/3</span></div>
+            <fieldset class="input-group">
                 <legend>Información laboral</legend>
                 <label for="jobSector">Sector profesional<span class="required">*</span></label>
                 <select name="jobSector" id="jobSector" required aria-describedby="typeError">
@@ -94,53 +94,48 @@
                     <option value="mastersDegree">Máster Universitario</option>
 
                 </select>
+
+
                 <legend>Rango salarial</legend>
+                <div class="salary-range">
+                    <input type="radio" name="salary" id="salary1" value="Sin dudarlo"><label
+                        for="recomendacion1">18.000-21.000</label><br>
+                </div>
+                <div class="salary-range">
+                    <input type="radio" name="salary" id="salary2" value="Puede que sí"><label
+                        for="recomendacion2">22.000-26.000
+                    </label><br>
+                </div>
+                <div class="salary-range">
+                    <input type="radio" name="salary" id="salary3" value="Puede que no"><label
+                        for="recomendacion3">27.000-29.000</label><br>
+                </div>
+                <div class="salary-range">
+                    <input type="radio" name="salary" id="salary4" value="De ninguna manera"><label
+                        for="recomendacion4">30.000-34.000</label>
+                </div>
+                </div>
 
-                <label class="radio-btn">18.000-21.000
-                    <input type="radio" name="radio">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="radio-btn">22.000-26.000
-                    <input type="radio" name="radio">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="radio-btn">27.000-29.000
-                    <input type="radio" name="radio">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="radio-btn">30.000-34.000
-                    <input type="radio" name="radio">
-                    <span class="checkmark"></span>
-
-                    <button type="button" class="previous" onclick="previousStep()">Anterior</button>
-                    <button type="button" class="next" onclick="nextStep()">Siguiente</button>
             </fieldset>
             <!-- Paso 3: Descripción personal y movilidad -->
-            <fieldset class="step" id="step-3" hidden>
-                <legend>Disponibilidad de movilidad (viajar)</legend>
-                <label class="checkbox-btn">No sería posible
-                    <input type="checkbox" checked="checked">
-                    <span class="checkmark"></span>
-                </label>
+            <div class="currentStep"><span>3</span>/3</span></div>
 
-                <label class="checkbox-btn">A veces
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
+            <fieldset class="input-group">
+                <legend>Disponibilidad para viajar</legend>
+                <div class="travel">
 
-                <label class="checkbox-btn">Disponibilidad total
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
-
+                    <input type="checkbox" name="tech" id="tech1" value="opcion1"><label for="travel1">No</label><br>
+                    <input type="checkbox" name="tech" id="tech2" value="opcion2"><label for="travel2">Tal
+                        vez</label><br>
+                    <input type="checkbox" name="tech" id="tech8" value="opcion3"><label for="travel3">Sí</label>
+                </div>
                 <legend>Escríbenos sobre ti</legend>
-                <textarea name="comment" form="jobApplicationForm" rows="5"
-                    placeholder="Descríbete brevemente..." required id="description"></textarea>
+                <textarea name="comment" form="jobApplicationForm" rows="5" placeholder="Descríbete brevemente..."
+                    required></textarea>
 
-                <button type="button" class="previous" onclick="previousStep()">Anterior</button>
                 <button type="submit">Enviar solicitud</button>
             </fieldset>
-            <div id="errorMessages"></div>
+
         </form>
     </main>
     <footer>
@@ -151,7 +146,7 @@
         </div>
         <p class="footer__copy">Copyright<sup>&copy;</sup>2025</p>
     </footer>
-    <script src="./js/script.js"></script>
+
 </body>
 
 </html>

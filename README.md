@@ -14,5 +14,3 @@
 - Uso de normalize.css
 - Uso de modelo BEM
 
-### Notas
-- https://www.w3schools.com/howto/howto_js_form_steps.asp
